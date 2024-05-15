@@ -4,21 +4,20 @@ import asyncio
 from classes import Tee
 from common import ADDR
 
+
 logger = logging.getLogger(__name__)
 logging.basicConfig()
 
-async def handle_client(writer):
-    addr = writer.get_extra_info('peername')
-    logger.warning(f"{addr} connected ")
-    tee = Tee()
+async def handle_client(reader, writer):
+    logger.warning("connected")
+    tee = Tee('green', 10)
     
 
     data = pickle.dumps(tee)
     writer.write(data)
     await writer.drain()
+    print('OK')
 
-
-    writer.close()
 
 async def main():
     server = await asyncio.start_server(
@@ -30,4 +29,6 @@ async def main():
     async with server:
         await server.serve_forever()
 
-asyncio.run(main())
+
+if __name__ == '__main__':
+    asyncio.run(main())

@@ -1,4 +1,4 @@
-class Tee ():
+class Tee():
     #описание чая
     def __init__(self, type_of_fermentation, portions):
         self.type_of_fermentation = type_of_fermentation
