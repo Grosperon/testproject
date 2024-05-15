@@ -12,7 +12,6 @@ class tree{
 private:
     Node *head;
     int length;
-    int hight;
 public:
     tree() // конструктор класса без параметров
     {
@@ -74,7 +73,7 @@ public:
     }
 
     void LLL() {
-        cout << length << " " << hight << endl;
+        cout << length << endl;
     }
 
     void prefix(Node* tree) {
